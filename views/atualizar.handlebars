@@ -1,7 +1,7 @@
 <div class="container">
 <nav class="navbar bg-primary navbar-expand-lg  " data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">SISTEMA WEB</a>
+        <a class="navbar-brand" href="/">SISTEMA WEB</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,33 +26,34 @@
 <h6> Cadastrar - Agendamento de Potenciais Clientes</h6>
 <h7> Sistema Utilizado para agendamento de serviços <h7>
 </div>
-        <form>
+        <form action="/atualizar" method="POST">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome: </label>
-                <input type="text" class="form-control" id="nome">
+                <input type="text" name="nome" class="form-control" id="nome">
 
             </div>
             <div class="mb-3">
                 <label for="telefone" class="form-label">Telefone: </label>
-                <input type="text" class="form-control" id="telefone">
+                <input type="text" name="telefone" class="form-control" id="telefone">
             </div>
 
             <label for="origem" class="form-label">Origem: </label>
             <div class="mb-3">
-                <select class="form-select" aria-label="Celular">
-                    <option selected>Celular</option>
-                    <option value="1">Fixo</option>
+                <select name="origem" class="form-select" aria-label="origem">
+                    <option selected value="celular">Celular</option>
+                    <option value="fixo">Fixo</option>
+                           <option value="whatsapp">Whatsapp</option>
                 </select>
             </div>
                <div class="mb-3">
                 <label for="datacontato" class="form-label">Data do Contato: </label>
-                <input type="date" class="form-control" id="nome">
+                <input type="date" name="datacontato" class="form-control" id="datacontato">
 
             </div>
             <div class="mb-3">
 
-               Observação: <label for="exampleFormControlTextarea1" class="form-label"></label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+               Observação: <label for="observacao" class="form-label"></label>
+                <textarea class="form-control" name="observacao"id="observacao" rows="3"></textarea>
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
