@@ -29,9 +29,35 @@ app.post("/atualizar", function(req, res){
 })
 
 app.get("/consultar", function(req, res){
-    res.render("consultar")
+    post.findAll().then(function(posts){
+        res.render("consultar",{post: posts})
+    })
 })
-
+app.get("/editar/:id", function(req,res){
+    post.findOne({where: {"id":req.params.id}}).then(function(posts){
+        res.render("editar",{post: posts})
+    })
+})
+app.post("/atualiza", function(req, res){
+    post.update({
+        nome: req.body.nome,
+        telefone: req.body.telefone,
+        origem: req.body.origem,
+        data_contato: req.body.data_contato,
+        observacao: req.body.observacao
+    }, {where: {id: req.body.id}}).then(function(){
+        res.redirect("/consulta")
+    }).catch(function(erro){
+        res.send("Falha ao atualizar os dados: " + erro)
+    })
+})
+app.get("/deletar/:id", function(req,res){
+    post.destroy({where: {"id":req.params.id}}).then(function(){
+        res.redirect("/consultar")
+    }).catch(function(erro){
+        res.send("Falha ao atualizar os dados: " + erro)
+    })
+})
 app.listen(8081, function(){
     console.log("Servidor Ativo!")
 })
